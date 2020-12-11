@@ -9,35 +9,16 @@ if __name__ == '__main__':
     # Bool function to determine trading time
     def IsTradingTime(rightNow):
         print(rightNow)
-        if 17 <= rightNow.hour < 23:
-            return True
-        elif rightNow.hour == 16:
-            if rightNow.minute >= 30:
-                return True
-            else:
-                return False
-        else:
-            return False
+        return 17 <= rightNow.hour < 23 or (rightNow.hour == 16 and rightNow.minute >= 30)
 
-    # Function to set sleeping mode
+    # Function to set sleeping mode (turn process to blocking)
     def waitToStart(hour, mint):
         if hour < 16:
             res = ((16 - hour)*60 + (29 - mint))*60
+            print(f"Wait to trading time: {res} seconds")
             time.sleep(res)
 
-    # Stocks keys
-    stockKeys = ['KO', 'T', 'PFE', 'GE', 'ABT',
-                   'VZ', 'SBUX', 'NKE', 'BAC', 'WFC',
-                   'CSCO', 'INTC', 'BMY', 'MRK', 'CELG', 'AMD',
-                   'MDCO', 'NIO', 'ACB', 'ZNGA', 'SCHW',
-                   'AMTD', 'TEVA', 'S', 'SNAP', 'F',
-                   'TIF', 'FCX', 'NOK', 'PDD', 'AAPL',
-                   'TSLA', 'MSFT', 'DIS', 'GOOG', 'C',
-                   'ADBE', 'MA', 'JNJ', 'CRM', 'UBER',
-                   'GS', 'BA', 'AVGO', 'COP', 'CAT',
-                   'QCOM', 'PYPL', 'LMT', 'IBM', 'MS',
-                   'PM', 'MMM', 'MCD', 'AIG', 'JPM']
-
+    stockKeys = ['AAPL']
     # bool, time variables
     today = dt.datetime.today().strftime("%A")
     first = True

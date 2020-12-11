@@ -69,4 +69,4 @@ def updateFailedProcess(hour, minute):
     with open('logging/Failed Processes.txt', 'a') as f:
         f.write(f"\n{hour}:{minute} Faild")
 
-#cleanFiles(stockKeys)
+cleanFiles(stockKeys)
